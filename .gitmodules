@@ -1,0 +1,3 @@
+[submodule "MangaCover"]
+	path = MangaCover
+	url = https://github.com/taksqth/MangaCover
