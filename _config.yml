@@ -20,12 +20,14 @@
 
 title: Siteshi
 email: gabrie.takeshi.higa@gmail.com
-description: >- # this means to ignore newlines until "baseurl:"
+description: >-
   Welcome to my page. It's quite empty right now, but I plan to host some simple projects
   and maybe express my opinion on topics related to data.
 
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+domain: taksqth.github.io
+baseurl: /
+url: https://taksqth.github.io
+
 twitter_username: exec_takeshi
 github_username: taksqth
 
