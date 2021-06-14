@@ -32,7 +32,7 @@ twitter_username: exec_takeshi
 github_username: taksqth
 
 # Build settings
-theme: minima
+remote_theme: jekyll/minima
 plugins:
   - jekyll-feed
 
