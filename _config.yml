@@ -28,8 +28,10 @@ domain: taksqth.github.io
 baseurl: /
 url: https://taksqth.github.io
 
-twitter_username: exec_takeshi
-github_username: taksqth
+minima:
+  social_links:
+    twitter: exec_takeshi
+    github: taksqth
 
 # Build settings
 remote_theme: jekyll/minima
