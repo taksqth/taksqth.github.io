@@ -1,11 +1,13 @@
 ---
-layout: post author: taksqth title:
+layout: post
+author: taksqth
+title:
 ---
 
-## The problem, context and a bad approach
+## The problem, the context and a bad approach
 
 This post is about the hard problem of joining data from different sources and,
-in the worst case, with different grain (the level of detail at which the data
+in the worst cases, with different grain (the level of detail at which the data
 is stored). Let's say you need to prepare data for a dashboard that combines
 sales data from your department and advertising costs from different vendors
 such as Google and Facebook. Depending on your background you may need more
@@ -13,6 +15,8 @@ information or you can already think of some ways to tackle this problem. What I
 will describe below is the way I usually do it and why I think one of the more
 common strategies, which is a simple JOIN statement, is not something I would
 recommend. But first, a bit of much needed context.
+
+![Here's the example that will follow us throughout the article. Pleased to meet you!]()
 
 At work, I get to interact with the marketing department of companies at
 different points in their journey to become more data-driven. Most of the time,
@@ -51,7 +55,7 @@ to the website where they will eventually make a purchase. It can happen that
 some users share this URL with their friends or family members and suddenly that
 id doesn't belong only to the click made by that user. When we JOIN this data
 the end result is that the cost row associated with that click gets matched with
-the purchase made by every user that used that same shared url.[^clickid]
+the purchase made by every user that used that same shared url.[^1]
 
 The outcome would be at best a wrong metric that someone notices, which in turn
 may lead to that team losing trust in the data, and at worst one that no one
@@ -89,7 +93,7 @@ each row of the resulting table without things going wrong, then I propose that
 we avoid doing exactly this. By stacking each table on top of each other we
 don't need to change what each row represents, preserving their original
 meaning. The resulting table will probably have mixed grain, but that's
-fine.[^mixedgrain] 
+fine.[^2] 
 
 How do we do this? After all, for our UNION ALL clause to work, the different
 tables need matching schemas and, in our example, the sales table and the costs
@@ -115,7 +119,7 @@ of this method, as doing a JOIN requires something like this as well. However
 with this stacking technique we don't run into problems when the attributes from
 different tables don't match in detail.
 
-[^clickid] In most cases the first key people come up with when trying to JOIN
+[^1] In most cases the first key people come up with when trying to JOIN
 the data isn't even the click id, but the url parameters from the analytics
 vendor of choice.  Those are not created automatically by the advertising vendor
 server, but instead configured either manually or with rules by the agency that
@@ -124,7 +128,7 @@ the platform (vendor, strategy, format, audience, etc.). Those parameters are
 great for reporting and we can leverage them with the UNION ALL technique, but
 are even more disastrous than click ids for the JOIN approach.
 
-[^mixedgrain] You may have heard that this is a bad practice. I would agree if
+[^2] You may have heard that this is a bad practice. I would agree if
 our objective was to build a solid foundation and leave the work of joining the
 data to the end user with the help of a solid BI tool. But as I've said before,
 this is not always the context we're in, and from my experience this is an
